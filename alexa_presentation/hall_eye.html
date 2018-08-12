@@ -6,25 +6,6 @@
 
     <style>
 
-        body {
-            /* Uncomment below to zoom out */
-            background: #0d0f23;
-            padding: 2em;
-            /* Color cast */
-        }
-
-        body::before {
-            background: #0d0f23;
-            content: "";
-            mix-blend-mode: color-dodge;
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 10000;
-        }
-
         /* Basic setup */
         div {
             border-radius: 100%;
@@ -41,63 +22,16 @@
             height: 100%;
         }
 
-        .panel {
-            /* Panel outer metal border */
-            background: linear-gradient(90deg, #1f2344, #94a4ba, #404974, #94a4ba, #c2cad4);
-            border-radius: 0;
-            margin: 0 auto;
-            padding: 7px;
-            width: 322px;
-            height: 985px;
-            z-index: 1;
-        }
-
-        .panel::before {
-            /* Panel inner metal border */
-            background: linear-gradient(#53658c, #0f1029, #52638a);
-            width: 308px;
-            height: 971px;
-        }
-
-        .panel::after {
-            /* Panel background */
-            background: radial-gradient(ellipse, #13142d, #08081a);
-            box-shadow: inset 0 0 80px #0b0a1f;
-            top: 12px;
-            left: 12px;
-            width: 298px;
-            height: 961px;
-        }
-
         .base {
             /* Metal outer border */
-            background-image: linear-gradient(45deg, #fefefe 10%, #5d6d94, #050718, #5d6d94, #fefefe 90%);
             height: 260px;
             width: 260px;
             padding: 10px;
             position: absolute;
-            bottom: 295px;
-            left: 33px;
             z-index: 10;
+            display: inline-block;
             /* Metal inner border */
             /* Red glow */
-        }
-
-        .base::before {
-            background-image: linear-gradient(#d9dee5, #151531), linear-gradient(90deg, #434c77, #0b0a1f, #434c77);
-            background-blend-mode: hard-light, normal;
-            box-shadow: inset 0 0 14px 9px rgba(5, 7, 24, 0.4);
-            width: 240px;
-            height: 240px;
-        }
-
-        .base::after {
-            background-image: radial-gradient(#b10000 10%, rgba(177, 0, 0, 0) 71%);
-            mix-blend-mode: lighten;
-            top: -8px;
-            left: -10px;
-            width: 280px;
-            height: 280px;
         }
 
         .lens {
@@ -106,10 +40,10 @@
             /* Lens dark inner borders */
             border: 8px solid #050718;
             box-shadow: inset 0 0 0 10px #380014;
-            top: 12px;
-            left: 12px;
-            width: 213px;
-            height: 213px;
+            top: -10px;
+            left: -10px;
+            width: 260px;
+            height: 260px;
             z-index: 10;
             /* Red cast over lens, intensifies color */
             /* Yellow core */
@@ -125,50 +59,6 @@
         .lens::after {
             background-image: radial-gradient(#fff 2px, #fff300 8px, rgba(255, 0, 0, 0.9) 14px, rgba(255, 0, 0, 0.08) 35px, transparent 35px);
             z-index: 100;
-        }
-
-        /* Alternating bands of color with transparency to create rounded reflections effect */
-        .reflections,
-        .reflections::before,
-        .reflections::after {
-            /* Position gradient for reflections */
-            background-image: radial-gradient(transparent 19%, #ec32aa 23%, #d4f6fc 28%, #ec32aa 33%, transparent 36%, transparent 38%, #e558d0 40%, #d0fcfe 45%, #ce73df 50%, transparent 52%, transparent 56%, #b883e7 60%, #b7ffff 65%, #3564c7 72%, transparent);
-            background-size: 182px 182px;
-            background-position: top center;
-            /* Round edges of reflections */
-            border-radius: 15px 15px 5px 5px/5px 5px 15px 15px;
-            /* Blurs edges & gradient for smoother effect */
-            filter: blur(4px);
-            position: absolute;
-            top: 26px;
-            width: 58px;
-            height: 75px;
-            z-index: 10;
-        }
-
-        /* Center reflection */
-        .reflections {
-            left: 69px;
-            /* Transform into trapezoid shape */
-            transform: perspective(30px) rotate3d(1, 0, 0, -15deg);
-            transform-origin: top;
-            /* Left reflection */
-            /* Right reflection */
-        }
-
-        .reflections::before, .reflections::after {
-            height: 45px;
-            top: 28px;
-        }
-
-        .reflections::before {
-            left: -65px;
-            transform: rotate(-43deg);
-        }
-
-        .reflections::after {
-            right: -65px;
-            transform: rotate(43deg);
         }
 
         /* Brightens lens */
@@ -200,13 +90,9 @@
 
 </head>
 <body>
-<!--<div class="panel">-->
-    <div class="base">
-        <div class="lens">
-            <div class="reflections"></div>
-        </div>
-        <div class="animation"></div>
-    </div>
-<!--</div>-->
+vic <div class="base">
+    <div class="lens"></div>
+    <div class="animation"></div>
+</div>
 </body>
 </html>
