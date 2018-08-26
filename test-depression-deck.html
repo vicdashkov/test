@@ -13,26 +13,8 @@
           content="fSdNGGF/aG8FueqttB5obFd0ziRKhL97QJIjWUrCV9Rei9d9cdjlz523tVUEO0HvNayl2tk8P/ufkhld4PQOvA=="/>
     <style id="user-css-output" type="text/css"></style>
 
-    <style>
-        .loader {
-            display: inline-block;
-            border: 3px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 3px solid #3498db;
-            width: 12px;
-            height: 12px;
-            animation: spin 1s linear infinite;
-        }
+        <link rel="stylesheet" href="depression-styles.css">
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
 </head>
 <body>
 <div class="reveal">
@@ -423,6 +405,7 @@
 <script src="js_0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typeit@5.10.6/dist/typeit.min.js"></script>
 
+<script src="depression-js.js"></script>
 
 <script>
     Reveal.initialize({
@@ -455,48 +438,6 @@
     if (window.hljs) hljs.initHighlightingOnLoad();
 
 
-    // maybe something like this (don't forget about pouses
-    var depressionLines = {
-        1: {
-            lines: [
-                {text: "hellovic", timing: 0},
-                {text: "nice to see you", timing: 2000},
-                {text: "How have you been?", timing: 4000}
-            ]
-        },
-        2: {
-            lines: [
-                {text: "this is where..", timing: 0},
-                {text: "hall", timing: 2000},
-                {text: "comes in", timing: 4000}
-            ]
-        }
-    };
-
-
-    var body = document.getElementsByTagName('body');
-    var depressionElement = document.createElement('div');
-    depressionElement.style.cssText = 'position:absolute;width:100%;height:20px;z-index:100;left:20px;bottom:20px';
-    document.body.appendChild(depressionElement);
-
-    Reveal.addEventListener('slidechanged', function (evt) {
-        console.log(evt.indexh)
-        readLines(depressionLines[evt.indexh], depressionElement)
-    });
-
-    function readLines(lines, el) {
-        el.innerHTML = '<span class="depression-line"></span>';
-
-        var cursorChar = lines.cursorChar || '<div class="loader"></div>';
-
-        var typeIt = new TypeIt('.depression-line',
-            {speed: 50, cursorChar: cursorChar, cursorSpeed: 0});
-
-        console.log(typeIt);
-        lines.lines.forEach(function (element) {
-            typeIt.pause(element.timing).type(element.text)
-        });
-    }
 
 </script>
 </body>
