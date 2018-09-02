@@ -1,5 +1,7 @@
 var currentSlide = 0;
 
+var killAllHumansBytes = "01001011 01101001 01101100 01101100 00100000 01100001 01101100 01101100 00100000 01101000 01110101 01101101 01100001 01101110 01110011 "
+
 var depressionSlideConfig = {
     1: {
         linesStart: [
@@ -71,7 +73,7 @@ function shouldChange(phrase) {
 recognition.onresult = function (event) {
     var last = event.results.length - 1;
     var phrase = event.results[last][0].transcript;
-    console.log(phrase.trim());
+
     if (phrase && shouldChange(phrase)) {
         console.log('+');
 
@@ -81,15 +83,17 @@ recognition.onresult = function (event) {
                 slideConfig.callbackSlideChange()
             }
 
-            var linesEnd = slideConfig.linesEnd || [{text: "YES master", timing: 0}]
+            var linesEnd = slideConfig.linesEnd || [{text: "YES master", timing: 0}];
+
             readLines(linesEnd, null, 1)
         } else {
             readLines([{text: "YES master", timing: 0}], null, 1)
         }
 
+        var timeout = (slideConfig && slideConfig.timeout) || 2500;
         setTimeout(function () {
             Reveal.next();
-        }, 2500);
+        }, timeout);
 
     } else {
         console.log('-')
