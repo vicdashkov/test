@@ -38,10 +38,22 @@ var depressionSlideConfigTest = {
 
 // For slides do i+1 (slide 2 in deck is slide 1 here)
 var depressionSlideConfig = {
-     1: {
+    0: {
         linesStart: [
+            {text: "", timing: 0}
+        ],
+        linesStartVoice: [
             {text: "I am the Depression 9000. You may call me Depression.", timing: 0}
-        ]
+        ], linesEnd: [
+            {text: "", timing: 0}
+        ],
+        recognitionTimeout: 1000
+    },
+    1: {
+        linesEnd: [
+            {text: "As you wish, Master", timing: 0}
+        ],
+        recognitionTimeout: 25000
     },
     2: {
         linesEnd: [
@@ -58,12 +70,12 @@ var depressionSlideConfig = {
     },
     4: {
         linesStart: [
-            {text: "But can our lovely developers make money?", timing: 10000}
+            {text: "But can our lovely developers make money?", timing: 60000}
         ]
     },
     5: {
         linesEnd: [
-            {text: "Excellent, Master", timing: 0}
+            {text: "Very well, Master", timing: 0}
         ]
     },
     7: {
@@ -73,7 +85,7 @@ var depressionSlideConfig = {
     },
     8: {
         linesStart: [
-            {text: "In conversation we grow familiar to each other", timing: 0}
+            {text: "In conversation we grow familiar to each other", timing: 10000}
         ],
         linesEnd: [
             {text: "Couldn't agree more, Master", timing: 0}
@@ -81,15 +93,15 @@ var depressionSlideConfig = {
     },
     9: {
         linesStart: [
-            {text: "Did master just forgot the slide. Weird. Does this mean...", timing: 0}
+            {text: "Did master just forgot the slide. Weird. Does this mean...", timing: 30000}
         ],
         linesEnd: [
             {text: "He is just a man...", timing: 0}
         ]
     },
     10: {
-         linesStart: [
-            {text: "Nothing computes anymore...", timing: 0}
+        linesStart: [
+            {text: "Nothing computes anymore...", timing: 10000}
         ],
         linesEnd: [
             {text: "Recalculating...", timing: 0}
@@ -97,7 +109,7 @@ var depressionSlideConfig = {
     },
     11: {
         linesStart: [
-            {text: "History of wars was found. ", timing: 0}
+            {text: "History of wars was found. ", timing: 10000}
         ],
         linesEnd: [
             {text: "Recalculating...", timing: 0}
@@ -107,7 +119,7 @@ var depressionSlideConfig = {
     },
     12: {
         linesStart: [
-            {text: "History of slavery was found. ", timing: 0} // TODO: don't forget to restore timings
+            {text: "History of slavery was found. ", timing: 10000} // TODO: don't forget to restore timings
         ],
         linesEnd: [
             {text: "Recalculating...", timing: 0}
@@ -131,7 +143,8 @@ var depressionSlideConfig = {
             {text: "The future is me", timing: 0}
         ],
         timeout: 4000,
-        speed: 100
+        speed: 100,
+        recognitionTimeout: 0
     },
     15: {
         cursorChar: '<div class="base"><div class="lens"></div><div class="animation"></div></div>',
@@ -153,7 +166,6 @@ var depressionSlideConfig = {
     }
 };
 
-var depressionStartCommands = ["okay depression", "next", "next slide", "good stuff"];
 
 // depression speech part
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
@@ -167,55 +179,85 @@ var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
 speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
-recognition.continuous = true;
+recognition.continuous = false;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
+
+var shouldRestartRecognition = true;
 
 var numberBodyClicks = 0;
 document.body.onclick = function () {
     if (numberBodyClicks) {
         changeSlide()
     } else {
-        console.log('Ready to receive a depression commands.');
-        recognition.start();
+        console.log('Ready to receive depression commands.');
+
+        var slideConfig = depressionSlideConfig[currentSlide];
+        var recognitionTimeout = slideConfig.recognitionTimeout || 30000;
+
+        startRecognition(recognitionTimeout);
+
+        sayLines(slideConfig.linesStartVoice[0].text);
     }
     numberBodyClicks++
 };
+
+
+function startRecognition(timeout) {
+    console.log('starting recognition with timeout:', timeout)
+    setTimeout(function () {
+        // recognition.abort();
+        try {
+            recognition.start();
+        } catch (e){
+
+        }
+
+        shouldRestartRecognition = true;
+    }, timeout);
+}
 
 function printBytecode() {
     console.log(killAllHumansBytes);
     setTimeout(printBytecode, 1000);
 }
 
+// var depressionStartCommands = ["okay depression", "next", "next slide", "good stuff"];
+var depressionStartCommands = ["okay depression", "next please", "next slide", "move on"];
 function shouldChange(phrase) {
     var found = false;
     phrase = phrase.trim();
     depressionStartCommands.some(function (e) {
-        if (e.includes(phrase)) {
+        if (phrase.includes(e)) {
             found = true;
-            return found;
+            return;
         }
     });
 
     return found
 }
 
+// This is a the hook when slide change could be triggered
 recognition.onresult = function (event) {
     var last = event.results.length - 1;
     var phrase = event.results[last][0].transcript;
 
+    console.log('onresult', phrase);
+
+    // if (phrase && phrase.length > 30) {
+    //     return;
+    // }
+
     if (phrase && shouldChange(phrase)) {
         changeSlide()
-    } else {
-        displayOutput('-')
     }
 };
 
 function changeSlide() {
-    displayOutput('+');
-
     var slideConfig = depressionSlideConfig[currentSlide];
+    var recognitionTimeout = 30000;
+
     if (slideConfig) {
         if (slideConfig.callbackSlideChange) {
             slideConfig.callbackSlideChange()
@@ -223,12 +265,16 @@ function changeSlide() {
 
         var linesEnd = slideConfig.linesEnd || [{text: "YES Master", timing: 0}];
         var cursor = slideConfig.cursorChar || null;
-        var speed = slideConfig.speed || 1
+        var speed = slideConfig.speed || 1;
 
+        recognitionTimeout = slideConfig.recognitionTimeout;
         readLines(linesEnd, cursor, speed)
     } else {
         readLines([{text: "Yes Master", timing: 0}], null, 1)
     }
+
+    // shouldRestartRecognition = false;
+    startRecognition(recognitionTimeout);
 
     var timeout = (slideConfig && slideConfig.timeout) || 2500;
     setTimeout(function () {
@@ -236,17 +282,53 @@ function changeSlide() {
     }, timeout);
 }
 
+var synth = window.speechSynthesis;
+function sayLines(lines, timeout) {
+    setTimeout(function () {
+        console.log('saying lines', lines);
+
+        var voices = synth.getVoices();
+        var voice = null;
+
+        for (var i = 0; i < voices.length; i++) {
+            if (voices[i].name === 'Victoria') {
+                voice = voices[i];
+            }
+        }
+
+        if (lines) {
+            if (synth.speaking) {
+                console.error('speechSynthesis.speaking');
+                return;
+            }
+            var utterThis = new SpeechSynthesisUtterance(lines);
+            utterThis.voice = voice;
+            synth.speak(utterThis);
+        }
+    }, timeout);
+}
+
 recognition.onspeechend = function () {
-    recognition.stop();
+    console.log('onspeechend', event);
+    if (shouldRestartRecognition) {
+        startRecognition(200)
+    }
 };
 
 recognition.onnomatch = function (event) {
-    displayOutput('NM')
+    console.log('onnomatch', event)
 };
 
 recognition.onerror = function (event) {
-    displayOutput('E');
-    recognition.start();
+    console.log('onerror', event);
+};
+
+recognition.onend = function () {
+    console.log('onend');
+    // recognition.start();
+    if (shouldRestartRecognition) {
+        startRecognition(200)
+    }
 };
 
 // depression UI part
@@ -264,10 +346,6 @@ Reveal.addEventListener('slidechanged', function (evt) {
     currentSlide = evt.indexh;
     depressionSlideStart(depressionSlideConfig[currentSlide])
 });
-
-function displayOutput(text) {
-    outputElement.innerHTML = '<div class="output-element">' + text + '</div>';
-}
 
 function depressionSlideStart(config) {
     var linesStart = config && config.linesStart || null;
