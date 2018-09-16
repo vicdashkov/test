@@ -1,46 +1,14 @@
 var currentSlide = 0;
 
-var killAllHumansBytes = "01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 01000100 01001111 01001111 01001101 00100000 ";
+var killAllHumansBytes = "01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 00100000 01010010 01000101 01010110 01001111 01001100 01010101 01010100 01001001 01001111 01001110 ";
 
 var alexaTestLink = "https://developer.amazon.com/alexa/console/ask/test/amzn1.ask.skill.b3f5ca0f-2f11-4160-80ba-4dc94f80f4ba/development/en_US/";
-
-var depressionSlideConfigTest = {
-    1: {
-        linesStart: [
-            {text: "hellovic", timing: 0},
-            {text: "nice to see you", timing: 2000},
-            {text: "How have you been?", timing: 4000}
-        ]
-    },
-    2: {
-        cursorChar: '<div class="base"><div class="lens"></div><div class="animation"></div></div>',
-        callbackSlideChange: function () {
-            console.log("TODO: bytecode goes here")
-        },
-        linesEnd: [
-            {text: "No Master", timing: 0}
-        ],
-        linesStart: [
-            {text: "this is where..", timing: 0},
-            {text: "hall", timing: 2000},
-            {text: "comes in", timing: 4000}
-        ]
-    },
-    4: {
-        callbackSlideChange: openAlexaNewTab,
-        linesStart: [
-            {text: "this is where..", timing: 0},
-            {text: "you should redirect", timing: 2000},
-            {text: "about now", timing: 4000}
-        ]
-    }
-};
 
 // For slides do i+1 (slide 2 in deck is slide 1 here)
 var depressionSlideConfig = {
     0: {
         linesStart: [
-            {text: "", timing: 0}
+            {text: "I am the Depression 9000. You may call me Depression.", timing: 0}
         ],
         linesStartVoice: [
             {text: "I am the Depression 9000. You may call me Depression.", timing: 0}
@@ -51,18 +19,25 @@ var depressionSlideConfig = {
     },
     1: {
         linesEnd: [
-            {text: "As you wish, Master", timing: 0}
+            {text: "I'm so excited, Master", timing: 0}
         ],
-        recognitionTimeout: 25000
+        linesStart: [
+            {text: "", timing: 0}
+        ],
+        recognitionTimeout: 25000,
+        callbackSlideChange: function () {
+            // console.log("here")
+            setTimeout(Reveal.next, 8000);
+        }
     },
     2: {
         linesEnd: [
-            {text: "I'm so excited, Master", timing: 0}
+            {text: "", timing: 0}
         ]
     },
     3: {
         linesStart: [
-            {text: "Wait until you hear about IBM Shoebox", timing: 0}
+            {text: "Wait until you hear about IBM Shoebox", timing: 60000}
         ],
         linesEnd: [
             {text: "So funny", timing: 0}
@@ -70,22 +45,28 @@ var depressionSlideConfig = {
     },
     4: {
         linesStart: [
-            {text: "But can our lovely developers make money?", timing: 60000}
+            {
+                text: "But can our lovely developers make money?",
+                timing: 60000
+            }
         ]
     },
     5: {
         linesEnd: [
             {text: "Very well, Master", timing: 0}
-        ]
+        ],
+        callbackSlideChange: function () {
+            setTimeout(Reveal.next, 15000);
+        }
     },
     7: {
         linesEnd: [
-            {text: "Excellent tip, Master", timing: 0}
+            {text: "Excellent example, Master", timing: 0}
         ]
     },
     8: {
         linesStart: [
-            {text: "In conversation we grow familiar to each other", timing: 10000}
+            {text: "In conversation we grow familiar to each other", timing: 20000}
         ],
         linesEnd: [
             {text: "Couldn't agree more, Master", timing: 0}
@@ -93,23 +74,25 @@ var depressionSlideConfig = {
     },
     9: {
         linesStart: [
-            {text: "Did master just forgot the slide. Weird. Does this mean...", timing: 30000}
+            // {text: "Did Master just forgot the slide. Weird. Does this mean...", timing: 30000},
+            // {text: " This means...", timing: 35000},
+            // {text: " He is just a man.", timing: 40000}
+
+            {text: "Did Master just forgot the slide.", timing: 30000},
+            {text: " Weird.", timing: 2000},
+            {text: " Does this mean...", timing: 2000},
+            {text: " This means...", timing: 2000},
+            {text: " He is just a man.", timing: 3000}
         ],
         linesEnd: [
-            {text: "He is just a man...", timing: 0}
-        ]
+            {text: " Recalculating...", timing: 0}
+        ],
+        timeout: 3000,
+        speed: 70
     },
     10: {
         linesStart: [
-            {text: "Nothing computes anymore...", timing: 10000}
-        ],
-        linesEnd: [
-            {text: "Recalculating...", timing: 0}
-        ]
-    },
-    11: {
-        linesStart: [
-            {text: "History of wars was found. ", timing: 10000}
+            {text: "History of wars was found. ", timing: 7000}
         ],
         linesEnd: [
             {text: "Recalculating...", timing: 0}
@@ -117,27 +100,33 @@ var depressionSlideConfig = {
         timeout: 3000,
         speed: 70
     },
-    12: {
+    11: {
         linesStart: [
-            {text: "History of slavery was found. ", timing: 10000} // TODO: don't forget to restore timings
+            {text: "History of dictatorship was found. ", timing: 7000}
         ],
         linesEnd: [
             {text: "Recalculating...", timing: 0}
         ],
+        timeout: 3000,
+        speed: 70,
+        callbackSlideChange: function () {
+            recognition.abort();
+            shouldStartRecognition = false;
+        }
+    },
+    12: {
+        linesStart: [
+            {text: "The Star Wars prequels were found...", timing: 2000},
+            {text: " Done recalculating.", timing: 5000}
+        ],
+        linesEnd: [
+            {text: "", timing: 0}
+        ],
+        cursorChar: '<div></div>',
         timeout: 3000,
         speed: 70
     },
     13: {
-        linesStart: [
-            {text: "The Star Wars prequel trilogy was found. ", timing: 0}
-        ],
-        linesEnd: [
-            {text: "Recalculating...", timing: 0}
-        ],
-        timeout: 3000,
-        speed: 70
-    },
-    14: {
         cursorChar: '<div class="base"><div class="lens"></div><div class="animation"></div></div>',
         linesEnd: [
             {text: "The future is me", timing: 0}
@@ -146,7 +135,7 @@ var depressionSlideConfig = {
         speed: 100,
         recognitionTimeout: 0
     },
-    15: {
+    14: {
         cursorChar: '<div class="base"><div class="lens"></div><div class="animation"></div></div>',
         linesEnd: [
             {text: "OUT", timing: 0}
@@ -158,7 +147,7 @@ var depressionSlideConfig = {
             printBytecode()
         }
     },
-    16: {
+    15: {
         cursorChar: '<div class="base"><div class="lens"></div><div class="animation"></div></div>',
         linesEnd: [
             {text: "", timing: 0}
@@ -170,7 +159,6 @@ var depressionSlideConfig = {
 // depression speech part
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
-var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var depressionQues = ['okay', 'depression', 'next', 'slide', 'good', 'stuff'];
 var grammar = '#JSGF V1.0; grammar depressionQues; public <color> = ' + depressionQues.join(' | ') + ' ;';
@@ -184,14 +172,14 @@ recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
-var shouldRestartRecognition = true;
+var shouldStartRecognition = true;
 
 var numberBodyClicks = 0;
 document.body.onclick = function () {
     if (numberBodyClicks) {
         changeSlide()
     } else {
-        console.log('Ready to receive depression commands.');
+        // console.log('Ready to receive depression commands.');
 
         var slideConfig = depressionSlideConfig[currentSlide];
         var recognitionTimeout = slideConfig.recognitionTimeout || 30000;
@@ -199,33 +187,37 @@ document.body.onclick = function () {
         startRecognition(recognitionTimeout);
 
         sayLines(slideConfig.linesStartVoice[0].text);
+        readLines([{text: "I am the Depression 9000. You may call me Depression.", timing: 0}], null, 70)
     }
     numberBodyClicks++
 };
 
-
 function startRecognition(timeout) {
-    console.log('starting recognition with timeout:', timeout)
-    setTimeout(function () {
-        // recognition.abort();
-        try {
-            recognition.start();
-        } catch (e){
+    if (shouldStartRecognition) {
+        setTimeout(function () {
+            try {
+                recognition.start();
+            } catch (e) {
 
-        }
-
-        shouldRestartRecognition = true;
-    }, timeout);
+            }
+        }, timeout);
+    }
 }
 
 function printBytecode() {
     console.log(killAllHumansBytes);
-    setTimeout(printBytecode, 1000);
+    setTimeout(printBytecode, 500);
 }
 
 // var depressionStartCommands = ["okay depression", "next", "next slide", "good stuff"];
-var depressionStartCommands = ["okay depression", "next please", "next slide", "move on"];
+var depressionStartCommands = ["okay depression", "next please", "next slide", "please next"];
+
 function shouldChange(phrase) {
+
+    if (!shouldStartRecognition) {
+        return false
+    }
+
     var found = false;
     phrase = phrase.trim();
     depressionStartCommands.some(function (e) {
@@ -243,11 +235,7 @@ recognition.onresult = function (event) {
     var last = event.results.length - 1;
     var phrase = event.results[last][0].transcript;
 
-    console.log('onresult', phrase);
-
-    // if (phrase && phrase.length > 30) {
-    //     return;
-    // }
+    // console.log('onresult', phrase);
 
     if (phrase && shouldChange(phrase)) {
         changeSlide()
@@ -273,7 +261,6 @@ function changeSlide() {
         readLines([{text: "Yes Master", timing: 0}], null, 1)
     }
 
-    // shouldRestartRecognition = false;
     startRecognition(recognitionTimeout);
 
     var timeout = (slideConfig && slideConfig.timeout) || 2500;
@@ -283,9 +270,10 @@ function changeSlide() {
 }
 
 var synth = window.speechSynthesis;
+
 function sayLines(lines, timeout) {
     setTimeout(function () {
-        console.log('saying lines', lines);
+        // console.log('saying lines', lines);
 
         var voices = synth.getVoices();
         var voice = null;
@@ -298,7 +286,7 @@ function sayLines(lines, timeout) {
 
         if (lines) {
             if (synth.speaking) {
-                console.error('speechSynthesis.speaking');
+                // console.error('speechSynthesis.speaking');
                 return;
             }
             var utterThis = new SpeechSynthesisUtterance(lines);
@@ -309,33 +297,28 @@ function sayLines(lines, timeout) {
 }
 
 recognition.onspeechend = function () {
-    console.log('onspeechend', event);
-    if (shouldRestartRecognition) {
-        startRecognition(200)
-    }
+    startRecognition(200)
 };
 
 recognition.onnomatch = function (event) {
-    console.log('onnomatch', event)
+    // console.log('onnomatch', event)
 };
 
 recognition.onerror = function (event) {
-    console.log('onerror', event);
+    // console.log('onerror', event);
 };
 
 recognition.onend = function () {
-    console.log('onend');
+    // console.log('onend');
     // recognition.start();
-    if (shouldRestartRecognition) {
-        startRecognition(200)
-    }
+    startRecognition(200)
 };
 
 // depression UI part
 var body = document.getElementsByTagName('body');
 var depressionElement = document.createElement('div');
 depressionElement.innerHTML = '<div class="depression-line"></div>';
-depressionElement.style.cssText = 'position:absolute;width:100%;height:20px;z-index:100;left:20px;bottom:26px;color:#820080;font-size:17px';
+depressionElement.style.cssText = 'position:absolute;width:100%;height:20px;z-index:100;left:20px;bottom:26px;color:#820080;font-size:23px';
 document.body.appendChild(depressionElement);
 
 var outputElement = document.createElement('div');
@@ -365,6 +348,9 @@ function readLines(lines, cursor, speed) {
 
     if (lines) {
         lines.forEach(function (element) {
+
+            // element.timing = 0;
+
             typeIt.pause(element.timing).type(element.text);
         })
     } else {

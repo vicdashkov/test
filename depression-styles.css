@@ -3,13 +3,13 @@
     border: 6px solid #f3f3f3;
     border-radius: 50%;
     border-top: 6px solid #3498db;
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     animation: spin 1s linear infinite;
 }
 
 .ti-cursor {
-    bottom: -4px !important;
+    bottom: -8px !important;
 }
 
 div {
@@ -36,7 +36,7 @@ div::before, div::after {
     z-index: 10;
     display: inline-block;
 
-    margin-top: -32px;
+    margin-top: -47px;
 }
 
 .lens {
