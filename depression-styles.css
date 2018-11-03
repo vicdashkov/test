@@ -9,7 +9,7 @@
 }
 
 .ti-cursor {
-    bottom: -8px !important;
+    bottom: -4px !important;
 }
 
 div {
@@ -29,8 +29,8 @@ div::before, div::after {
 
 .base {
     margin-left: 3px;
-    height: 52px;
-    width: 52px;
+    height: 62px;
+    width: 62px;
     padding: 10px;
     position: absolute;
     z-index: 10;
@@ -45,8 +45,8 @@ div::before, div::after {
     box-shadow: inset 0 0 0 10px #380014;
     top: -10px;
     left: -10px;
-    width: 52px;
-    height: 52px;
+    width: 62px;
+    height: 62px;
     z-index: 10;
 }
 
@@ -58,12 +58,12 @@ div::before, div::after {
 }
 
 .lens::after {
-    background-image: radial-gradient(#fff 1px, #fff300 3px, rgba(255, 0, 0, 0.9) 7px, rgba(255, 0, 0, 0.08) 24px, transparent 24px);
+    background-image: radial-gradient(#fff 1px, #fff300 3px, rgba(255, 0, 0, 0.9) 9px, rgba(255, 0, 0, 0.08) 28px, transparent 28px);
     z-index: 100;
 }
 
 .animation {
-    animation: flicker 3s infinite;
+    animation: flicker 2s infinite;
     background: radial-gradient(#79b4ba, #47696d, #890000);
     mix-blend-mode: color-dodge;
     opacity: 0;

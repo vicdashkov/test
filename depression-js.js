@@ -40,7 +40,7 @@ var depressionSlideConfig = {
             {text: "Wait until you hear about IBM Shoebox", timing: 60000}
         ],
         linesEnd: [
-            {text: "So funny", timing: 0}
+            {text: "My oldest colleague", timing: 0}
         ]
     },
     4: {
@@ -85,7 +85,7 @@ var depressionSlideConfig = {
             {text: " He is just a man.", timing: 3000}
         ],
         linesEnd: [
-            {text: " Recalculating...", timing: 0}
+            {text: "Recalculating...", timing: 0}
         ],
         timeout: 3000,
         speed: 70
@@ -318,7 +318,7 @@ recognition.onend = function () {
 var body = document.getElementsByTagName('body');
 var depressionElement = document.createElement('div');
 depressionElement.innerHTML = '<div class="depression-line"></div>';
-depressionElement.style.cssText = 'position:absolute;width:100%;height:20px;z-index:100;left:20px;bottom:26px;color:#820080;font-size:23px';
+depressionElement.style.cssText = 'position:absolute;width:100%;height:20px;z-index:100;left:20px;bottom:35px;color:#820080;font-size:26px';
 document.body.appendChild(depressionElement);
 
 var outputElement = document.createElement('div');
@@ -348,8 +348,6 @@ function readLines(lines, cursor, speed) {
 
     if (lines) {
         lines.forEach(function (element) {
-
-            // element.timing = 0;
 
             typeIt.pause(element.timing).type(element.text);
         })
